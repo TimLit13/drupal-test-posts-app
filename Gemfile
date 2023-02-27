@@ -17,6 +17,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 gem 'slim-rails', '~> 3.1', '>= 3.1.1'
+gem 'devise', '~> 4.9'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -30,6 +31,7 @@ group :development do
   gem 'rubocop-rails', '~> 2.14', require: false
   gem 'rubocop-rspec', '~> 2.10', require: false
   gem 'rubocop-performance', '~> 1.13', require: false
+  gem 'letter_opener'
 end
 
 group :test do
