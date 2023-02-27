@@ -20,9 +20,24 @@ gem 'slim-rails', '~> 3.1', '>= 3.1.1'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rspec-rails', '~> 6.0.0'
+  gem 'factory_bot_rails', '~> 6.2'
 end
 
 group :development do
   gem "web-console"
+  gem 'rubocop', '~> 1.45', '>= 1.45.1', require: false
+  gem 'rubocop-rails', '~> 2.14', require: false
+  gem 'rubocop-rspec', '~> 2.10', require: false
+  gem 'rubocop-performance', '~> 1.13', require: false
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'capybara', '>= 3.26'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+  gem 'launchy'
+  gem 'rails-controller-testing'
+  gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
+end
