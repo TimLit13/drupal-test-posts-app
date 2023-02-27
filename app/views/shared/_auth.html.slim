@@ -1,8 +1,9 @@
 div.collapse.navbar-collapse id="navbarSupportedContent"
   ul.navbar-nav.ms-auto.mb-2.mb-lg-0
     li.nav-item.dropdown
-      a.nav-link.dropdown-toggle.active href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" Not implemented
-      ul.dropdown-menu
+      a.nav-link.dropdown-toggle.active href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+        <i class="bi bi-person-lines-fill user-icon"></i>
+      ul.dropdown-menu.dropdown-menu-dark.dropdown-menu-end
         - if user_signed_in?
           li
             = link_to current_user.email, edit_user_registration_path, class: "dropdown-item"
