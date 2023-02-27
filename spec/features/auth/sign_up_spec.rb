@@ -11,10 +11,10 @@ feature 'User can sign up', '
 
   context 'unregistered user tries to sign up with valid params' do
     background do
-      fill_in 'Email', with: "a#{user.email}"
+      fill_in 'Email', with: "new#{user.email}"
       fill_in 'Password', with: user.password
       fill_in 'Password confirmation', with: user.password_confirmation
-      click_on 'Sign up'
+      within('.card') { click_on 'Sign up' }
     end
 
     scenario 'user recieves a confirmation email' do
@@ -22,7 +22,7 @@ feature 'User can sign up', '
     end
 
     scenario 'user can confirm email' do
-      open_email("a#{user.email}")
+      open_email("new#{user.email}")
       current_email.click_link 'Confirm my account'
 
       expect(page).to have_content 'Your email address has been successfully confirmed.'
@@ -32,7 +32,7 @@ feature 'User can sign up', '
   scenario 'Unregistered user tries to sign up with invalid params' do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
-    click_on 'Sign up'
+    within('.card') { click_on 'Sign up' }
 
     expect(page).to have_content 'prohibited this user from being saved'
   end
