@@ -47,3 +47,9 @@ RSpec/Rails/InferredSpecType:
 
 RSpec/PredicateMatcher:
   Enabled: false
+
+RSpec/Capybara/FeatureMethods:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
