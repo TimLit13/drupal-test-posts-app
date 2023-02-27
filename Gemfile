@@ -31,3 +31,13 @@ group :development do
   gem 'rubocop-rspec', '~> 2.10', require: false
   gem 'rubocop-performance', '~> 1.13', require: false
 end
+
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'capybara', '>= 3.26'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+  gem 'launchy'
+  gem 'rails-controller-testing'
+  gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
+end
