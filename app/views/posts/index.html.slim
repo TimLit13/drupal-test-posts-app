@@ -1,0 +1,6 @@
+== render partial: 'shared/pagy', locals: {pagy: @pagy}
+.posts-list.mt-3
+  .card-group
+    .row.row-cols-1.row-cols-md-3.g-4
+      - @posts.each do |post|
+        =render post

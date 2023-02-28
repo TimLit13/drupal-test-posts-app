@@ -1,0 +1,12 @@
+.col
+  =link_to post, class: 'text-decoration-none'
+    .card.text-center
+      - if representable_any(post.images)
+        = image_tag representable_any(post.images).representation(resize_to_limit: [300, 300]), class: "card-img-top"
+      - else
+        img src="..." class="card-img-top" alt="..."
+      .card-body
+        h5 class="card-title" style="color: black" = post.title
+        p class="card-text" style="color: gray" = post.description
+      .card-footer
+        small class="text-muted" = time_ago_in_words(post.updated_at, include_seconds: false) + ' ago'

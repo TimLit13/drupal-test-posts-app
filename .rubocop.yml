@@ -53,3 +53,9 @@ RSpec/Capybara/FeatureMethods:
 
 RSpec/ContextWording:
   Enabled: false
+
+RSpec/LeadingSubject:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
