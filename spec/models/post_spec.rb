@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   describe 'validations' do
     let(:user) { create(:user) }
+
     subject { build(:post, user: user) }
 
     it { should have_db_index(:title).unique(true) }
