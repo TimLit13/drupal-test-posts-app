@@ -1,0 +1,37 @@
+.new-post.container.text-center.card.col-6.pt-3
+  = form_with model: @post, local: true do |f|
+    = render 'shared/errors', resource: @post
+
+    .row.g-3.align-items-center
+      .col-3
+        = f.label :title, class: "col-form-label"
+      .col-9
+        = f.text_field :title, class: "form-control", autofocus: true, placeholder: "Write title here", autocomplete: "title"
+
+    .row.g-3.align-items-center
+      .col-3
+        = f.label :description, class: "col-form-label"
+      .col-9
+        = f.text_field :description, class: "form-control", placeholder: "Some description please", autocomplete: "description"
+
+    .row.g-3.align-items-center
+      .col-3
+        = f.label :body, class: "col-form-label"
+      .col-9
+        = f.text_area :body, class: "form-control", placeholder: "Tell us something", autocomplete: "body"
+
+    .row.g-3.align-items-center
+      .col-3
+        = f.label :images, class: "col-form-label"
+      .col-9
+        = f.file_field :images, multiple: true, class: "form-control"
+
+    - if current_user&.author_of?(@post)
+      - if @post.images.attached?
+        - @post.images.each do |file|
+          . class="attachment-#{file.id}"
+            p = link_to file.filename.to_s, url_for(file)
+            = link_to 'Del', attachment_path(file), method: :delete, data: { turbo_method: :delete }, local: false, remote: true
+
+    .d-grid.gap-2.col-6.mx-auto.mt-3
+      = f.submit 'Publish post', class: "btn btn-outline-success"

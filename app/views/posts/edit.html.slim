@@ -1,0 +1,7 @@
+.d-grid.gap-2.col-6.mx-auto.mt-3.mb-3
+  =link_to 'To all posts', posts_path, class: "btn btn-outline-secondary mb-3"
+
+= render 'form'
+
+.d-grid.gap-2.col-6.mx-auto.mb-3.mt-3
+  = link_to 'Delete post', post_path(@post), method: :delete, data: { turbo_method: :delete }, class: "btn btn-outline-danger mb-3"
