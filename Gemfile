@@ -18,11 +18,14 @@ gem "bootsnap", require: false
 
 gem 'slim-rails', '~> 3.1', '>= 3.1.1'
 gem 'devise', '~> 4.9'
+gem 'image_processing', '~> 1.12', '>= 1.12.2'
+gem 'pagy', '~> 6.0'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails', '~> 6.0.0'
   gem 'factory_bot_rails', '~> 6.2'
+  gem 'faker'
 end
 
 group :development do

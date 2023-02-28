@@ -6,4 +6,8 @@ class User < ApplicationRecord
          :confirmable, :trackable
 
   has_many :posts, dependent: :destroy
+
+  def author_of?(resource)
+    resource.user_id == self.id
+  end
 end

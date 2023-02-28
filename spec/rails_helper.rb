@@ -30,6 +30,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   Capybara.javascript_driver = :selenium_chrome_headless
+
+  config.after(:all) do
+    FileUtils.rm_rf("#{Rails.root}/tmp/storage")
+  end
 end
 
 Shoulda::Matchers.configure do |config|

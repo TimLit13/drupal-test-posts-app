@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user
 
-  validates_uniqueness_of :title
+  has_many_attached :images
+
+  validates :title, uniqueness: true
   validates :title, :description, :body, length: { minimum: 3 }, allow_nil: false
 end
