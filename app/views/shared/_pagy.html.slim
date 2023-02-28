@@ -1,0 +1,50 @@
+/ This template is i18n-ready: if you don't use i18n, then you can replace the pagy_t
+/ calls with the actual strings ("&lsaquo; Prev", "Next &rsaquo;", "&hellip;").
+/ The link variable is set to a proc that returns the link tag.
+/ Usage: link.call( page_number [, text [, extra_attributes_string ]])
+- link = pagy_link_proc(pagy, link_extra: 'class="page-link"')
+.row
+  .col-3
+  nav.pagy-bootstrap-nav.col-6 role="navigation"
+
+    ul.pagination.mt-3.justify-content-center
+
+      - if pagy.prev
+        li.page-item.prev == link.call(pagy.prev, "&lsaquo; Prev", 'aria-label="previous"')
+      - else
+        li.page-item.prev.disabled
+          a.page-link href="#" == "&lsaquo; Prev"
+
+      - pagy.series.each do |item|                 # series example: [1, :gap, 7, 8, "9", 10, 11, :gap, 36]
+        - if item.is_a?(Integer)                   # page link
+          li.page-item == link.call(item)
+
+        - elsif item.is_a?(String)                 # current page
+          li.page-item.active == link.call(item)
+
+        - elsif item == :gap                       # page gap
+          li.page-item.disabled.gap
+            a.page-link href="#" == "&hellip;"
+
+      - if pagy.next
+        li.page-item.next == link.call(pagy.next, "Next &rsaquo;", 'aria-label="next"')
+      - else
+        li.page-item.next.disabled
+          a.page-link href="#" == "Next &rsaquo;"
+
+  nav.pagy-bootstrap-nav.col-3 role="navigation"
+    ul.pagination.pagination-sm.mt-3.justify-content-end
+      li.page-item
+        a.page-link.disabled href="#" Show by:
+      li.page-item
+        = link_to_unless_current('9', posts_path(items: 9), class: 'page-link') do
+          = link_to '9', posts_path(items: 9), class: 'page-link active'
+      li.page-item
+        = link_to_unless_current('15', posts_path(items: 15), class: 'page-link') do
+          = link_to '15', posts_path(items: 9), class: 'page-link active'
+      li.page-item
+        = link_to_unless_current('30', posts_path(items: 30), class: 'page-link') do
+          = link_to '30', posts_path(items: 9), class: 'page-link active'
+      li.page-item
+        = link_to_unless_current('60', posts_path(items: 60), class: 'page-link') do
+          = link_to '60', posts_path(items: 9), class: 'page-link active'

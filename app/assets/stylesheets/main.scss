@@ -8,3 +8,27 @@
   color: #1A6054;
   transition: 0.2s;
 }
+
+.page-link {
+  color: #1A6054;
+  border-color: #4F9388;
+  border-color: #4F9388;
+}
+
+.page-link:hover {
+  color: #1A6054;
+  border-color: #4F9388;
+  border-color: #4F9388;
+}
+
+.page-link.active {
+  background-color: #4F9388;
+  border-color: #4F9388;
+  color: #E8A87C;
+}
+
+.page-item.active .page-link {
+  background-color: #4F9388;
+  border-color: #4F9388;
+  color: #E8A87C;
+}
