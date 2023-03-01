@@ -1,0 +1,3 @@
+- if @new_comment.errors.any?
+  = turbo_stream.update 'new_comment' do
+    = render 'comments/form', new_comment: @new_comment

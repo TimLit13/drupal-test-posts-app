@@ -6,6 +6,7 @@ RSpec.describe PostsController, type: :controller do
 
   describe 'GET #index' do
     let(:posts) { create_list(:post, 3, user: user) }
+
     before { get :index }
 
     it 'fill an array of all posts' do
@@ -30,9 +31,10 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe 'GET #new' do
-    before { login(user) }
-
-    before { get :new }
+    before do
+      login(user)
+      get :new
+    end
 
     it 'assigns a new post to @post' do
       expect(assigns(:post)).to be_a_new(Post)
@@ -44,8 +46,11 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe 'GET #edit' do
-    before { login(user) }
-    before { get :edit, params: { id: user_post } }
+    before do
+      login(user)
+      get :edit, params: { id: user_post }
+    end
+
     it 'assigns requested post to @post' do
       expect(assigns(:post)).to eq(user_post)
     end
@@ -57,6 +62,7 @@ RSpec.describe PostsController, type: :controller do
 
   describe 'POST #create' do
     before { login(user) }
+
     context 'with valid attributes' do
       it 'saves a new post in db' do
         expect { post :create, params: { post: attributes_for(:post) } }.to change(Post, :count).by(1)
@@ -73,7 +79,7 @@ RSpec.describe PostsController, type: :controller do
       it 'does not save the post' do
         expect do
           post :create, params: { post: attributes_for(:post, :invalid) }
-        end.to_not change(Post, :count)
+        end.not_to change(Post, :count)
       end
 
       it 're-renders new view' do
@@ -83,11 +89,12 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  fdescribe 'PATCH #update' do
+  describe 'PATCH #update' do
     let!(:user_post) { create(:post, user: user) }
 
     context 'Authenticated user' do
       before { login(user) }
+
       context 'With valid attributes' do
         it 'changes post attributes' do
           patch :update, params: { id: user_post, post: { body: 'Edited post' } }
@@ -102,12 +109,13 @@ RSpec.describe PostsController, type: :controller do
       end
     end
 
-     context 'with invalid attributes' do
+    context 'with invalid attributes' do
       before { login(user) }
+
       it 'does not update the post' do
         expect do
           patch :update, params: { id: user_post, post: attributes_for(:post, :invalid) }
-        end.to_not change(Post, :count)
+        end.not_to change(Post, :count)
       end
 
       it 're-renders edit view' do
@@ -119,7 +127,9 @@ RSpec.describe PostsController, type: :controller do
 
   describe 'DELETE #destroy' do
     before { login(user) }
+
     let!(:user_post) { create(:post, user: user) }
+
     it 'deletes post' do
       expect { delete :destroy, params: { id: user_post } }.to change(Post, :count).by(-1)
     end

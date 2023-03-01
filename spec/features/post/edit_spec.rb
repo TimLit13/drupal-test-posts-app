@@ -18,9 +18,9 @@ feature 'User can edit his post', '
       fill_in 'Title', with: 'Edited post title'
       click_on 'Publish post'
 
-      expect(page).to_not have_content user_post.title
+      expect(page).not_to have_content user_post.title
       expect(page).to have_content 'Edited post title'
-      expect(page).to_not have_selector('textarea')
+      expect(page).not_to have_selector('textarea')
     end
 
     scenario 'Edits his answer with errors' do
@@ -62,7 +62,7 @@ feature 'User can edit his post', '
     scenario 'Can not edit answer' do
       visit post_path(user_post)
 
-      expect(page).to_not have_selector(:link_or_button, 'Edit')
+      expect(page).not_to have_selector(:link_or_button, 'Edit')
     end
   end
 end

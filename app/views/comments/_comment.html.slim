@@ -1,0 +1,16 @@
+-if comment.user == current_user
+  .card.border-success.mb-3.ms-auto.text-end.comment style="max-width: 20rem;" class="comment-#{comment.id}"
+    .card-body.text-dark
+      p class="card-text" = comment.body
+    .card-footer.bg-transparent.border-success
+      small class="text-muted" = 'by ' + comment.user.email
+      br
+      small class="text-muted" = 'at ' + format_time(comment.updated_at)
+- else
+  .card.border-dark.mb-3 style="max-width: 20rem;" class="comment-#{comment.id}"
+    .card-body.text-dark
+      p class="card-text" = comment.body
+    .card-footer.bg-transparent.border-dark
+      small class="text-muted" = 'by ' + comment.user.email
+      br
+      small class="text-muted" = 'at ' + format_time(comment.updated_at)

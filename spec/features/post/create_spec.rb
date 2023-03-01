@@ -29,7 +29,7 @@ feature 'User can create post', '
 
     scenario 'Publish a post with errors' do
       click_on 'Publish post'
-      expect(page).to have_content "too short"
+      expect(page).to have_content 'too short'
     end
 
     scenario 'Publish a post with attached file' do

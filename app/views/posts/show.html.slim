@@ -5,7 +5,7 @@
   - if representable_any(@post.images)
     = image_tag representable_any(@post.images).representation(resize_to_limit: [1920, 1080]), class: "card-img-top"
   - else
-    img src="..." class="card-img-top" alt="..."
+    img src="..." class="card-img-top" alt=""
   .card-body
     h5 class="card-title" = @post.title
     p class="card-text"
@@ -17,3 +17,15 @@
 - if @post.user == current_user
   .d-grid.gap-2.col-6.mx-auto
     =link_to 'Edit post', edit_post_path(@post), class: "btn btn-outline-warning mb-3"
+
+= turbo_stream_from @post
+
+.row
+  .col-3
+  div class="post-#{@post.id}-comments row col-6"
+    = turbo_frame_tag :comments do
+      = render @comments
+
+- if user_signed_in?
+  = turbo_frame_tag :new_comment do
+    = render 'comments/form', new_comment: @new_comment

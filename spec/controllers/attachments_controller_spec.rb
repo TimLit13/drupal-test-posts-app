@@ -20,7 +20,7 @@ RSpec.describe AttachmentsController, type: :controller do
         it 'not redirects' do
           delete :destroy, params: { id: user_post.images.records.first, format: :js }
 
-          expect(response).to_not have_http_status(:redirect)
+          expect(response).not_to have_http_status(:redirect)
         end
       end
 

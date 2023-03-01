@@ -6,7 +6,10 @@ class PostsController < ApplicationController
     @pagy, @posts = pagy(Post.with_attached_images.all.order(updated_at: :desc))
   end
 
-  def show; end
+  def show
+    @comments = @post.comments.sorted
+    @new_comment = current_user&.comments&.build
+  end
 
   def new
     @post ||= Post.new

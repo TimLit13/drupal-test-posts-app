@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   root to: "posts#index"
 
-  resources :posts
+  resources :posts do
+    resources :comments, only: :create
+  end
+
   get 'about', to: 'static_pages#about'
   resources :attachments, only: :destroy
 end
