@@ -37,3 +37,6 @@ posts.each do |post|
     Comment.create(body: body, user: users.sample, post: post)
   end
 end
+
+# seed active admin
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

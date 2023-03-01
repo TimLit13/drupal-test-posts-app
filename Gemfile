@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+gem 'sassc-rails'
 gem "rails", "~> 7.0.3"
 gem "sprockets-rails"
 gem "pg", "~> 1.1"
@@ -20,6 +21,8 @@ gem 'slim-rails', '~> 3.1', '>= 3.1.1'
 gem 'devise', '~> 4.9'
 gem 'image_processing', '~> 1.12', '>= 1.12.2'
 gem 'pagy', '~> 6.0'
+gem 'activeadmin'
+gem 'arctic_admin'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
