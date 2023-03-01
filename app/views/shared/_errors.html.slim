@@ -1,4 +1,4 @@
-div class="post-errors-#{resource.id} text-center"
+div class="#{resource.class.name.downcase}-errors-#{resource.id} text-center"
   - if resource&.errors.present?
     ul
       - resource.errors.full_messages.each do |message|

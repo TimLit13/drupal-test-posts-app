@@ -20,6 +20,7 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include ControllerHelpers, type: :controller
   config.include FeatureHelpers, type: :feature
+  config.include ActionCable::TestHelper
 
   DatabaseCleaner[:active_record].strategy = :transaction
 
@@ -34,6 +35,8 @@ RSpec.configure do |config|
   config.after(:all) do
     FileUtils.rm_rf("#{Rails.root}/tmp/storage")
   end
+
+  ActionController::Base.asset_host = "http://127.0.0.0"
 end
 
 Shoulda::Matchers.configure do |config|

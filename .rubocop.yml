@@ -59,3 +59,18 @@ RSpec/LeadingSubject:
 
 Rails/I18nLocaleTexts:
   Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false

@@ -2,6 +2,7 @@ require 'faker'
 
 USERS_SEED = 5
 POSTS_PER_USER = 20
+COMMENTS_PER_POST = 5
 
 # seed users
 users = []
@@ -19,11 +20,20 @@ users = []
 end
 
 # seed posts
+posts = []
 users.each do |user|
   1.upto(POSTS_PER_USER) do
     title = Faker::Fantasy::Tolkien.unique.character
     description = Faker::Lorem.unique.paragraph(sentence_count: 1)
     body = Faker::Lorem.unique.paragraph(sentence_count: 10, supplemental: true, random_sentences_to_add: 10)
-    Post.create(title: title, description: description, body: body, user: user)
+    posts.push Post.create(title: title, description: description, body: body, user: user)
+  end
+end
+
+# seed comments
+posts.each do |post|
+  1.upto(COMMENTS_PER_POST) do
+    body = Faker::Lorem.unique.paragraph(sentence_count: 1)
+    Comment.create(body: body, user: users.sample, post: post)
   end
 end

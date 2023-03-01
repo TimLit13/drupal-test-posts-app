@@ -20,7 +20,7 @@ feature 'User can delete post' do
         click_on 'Delete post'
 
         expect(page).to have_content 'Post was successfully deleted'
-        expect(page).to_not have_content post.title
+        expect(page).not_to have_content post.title
       end
     end
 
@@ -31,12 +31,12 @@ feature 'User can delete post' do
       end
 
       scenario 'can not delete author post' do
-        expect(page).to_not have_selector(:link_or_button, 'Edit post')
-        expect(page).to_not have_selector(:link_or_button, 'Delete post')
+        expect(page).not_to have_selector(:link_or_button, 'Edit post')
+        expect(page).not_to have_selector(:link_or_button, 'Delete post')
       end
 
       scenario 'can not delete authors attachment' do
-        expect(page).to_not have_selector(:link_or_button, 'Del')
+        expect(page).not_to have_selector(:link_or_button, 'Del')
       end
     end
   end
@@ -47,13 +47,13 @@ feature 'User can delete post' do
     end
 
     scenario 'can not delete post' do
-      expect(page).to_not have_selector(:link_or_button, 'Edit post')
-      expect(page).to_not have_selector(:link_or_button, 'Delete post')
+      expect(page).not_to have_selector(:link_or_button, 'Edit post')
+      expect(page).not_to have_selector(:link_or_button, 'Delete post')
     end
 
     scenario 'can not delete attachment' do
-      expect(page).to_not have_selector(:link_or_button, 'Edit post')
-      expect(page).to_not have_selector(:link_or_button, 'Del')
+      expect(page).not_to have_selector(:link_or_button, 'Edit post')
+      expect(page).not_to have_selector(:link_or_button, 'Del')
     end
   end
 end

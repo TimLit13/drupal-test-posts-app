@@ -1,0 +1,13 @@
+  .new-comment.container.text-center.card.col-6.pt-3
+    = form_with model: [@post, @new_comment] do |f|
+
+      = render 'shared/errors', resource: @new_comment
+
+      .row.g-3.align-items-center
+        .col-12
+          = f.text_field :body, class: "form-control", autofocus: true, placeholder: "Write new comment here"
+
+      = f.hidden_field :post_id, value: @post.id
+
+      .d-grid.gap-2.col-6.mx-auto.mt-3
+        = f.submit 'Send comment', class: "btn btn-outline-success"
